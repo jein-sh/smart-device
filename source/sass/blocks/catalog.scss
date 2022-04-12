@@ -1,0 +1,169 @@
+.catalog {
+  min-height: 960px;
+  padding: 64px 0 143px;
+
+  color: $color-default-white;
+  background-color: $color-default-black;
+
+  @include vp-1023 {
+    padding: 55px 0 77px;
+  }
+
+  @include vp-767 {
+    padding: 47px  0 86px;
+  }
+}
+
+.catalog h2 {
+  margin: 0 0 55px;
+  padding: 0;
+
+  font-family: $ff-roboto;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 51px;
+
+  @include vp-1023 {
+    margin-bottom: 35px;
+  }
+
+  @include vp-767 {
+    width: 200px;
+    margin-bottom: 29px;
+
+    font-size: 28px;
+    line-height: 39px;
+  }
+}
+
+.catalog__list {
+  display: grid;
+  gap: 85px;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include vp-1023 {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    justify-items: stretch;
+    align-items: stretch;
+  }
+}
+
+.catalog__item {
+  position: relative;
+  height: 650px;
+
+  @include vp-1023 {
+    height: 250px;
+  }
+}
+
+.catalog__link {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.catalog img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.catalog__item h3 {
+  position: absolute;
+  top: 50px;
+  left: 40px;
+
+  max-width: 50%;
+  margin: 0;
+  padding: 0;
+
+  font-family: $ff-roboto;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: $color-default-white;
+
+  @include vp-1023 {
+    top: 40px;
+    left: 45px;
+    width: 200px;
+  }
+
+  @include vp-767 {
+    top: 26px;
+    left: 30px;
+
+    font-size: 18px;
+    line-height: 30px;
+  }
+}
+
+.catalog__arrow {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  width: 60px;
+  height: 60px;
+
+  background-color: $color-default-blue;
+  border-radius: 3px 0 0 0;
+
+  @include vp-767 {
+    width: 40px;
+    height: 40px;
+  }
+
+  &::after,
+  &::before {
+    content: "";
+    z-index: 5;
+    position: absolute;
+    width: 5px;
+    height: 1px;
+
+    background-color: $color-default-white;
+
+    @include vp-767 {
+      width: 3px;
+    }
+  }
+
+  &::after {
+    top: 29px;
+    left: 30px;
+
+    transform: rotate(45deg);
+
+    @include vp-767 {
+      top: 17px;
+      left: 20px;
+    }
+  }
+
+  &::before {
+    top: 32px;
+    left: 30px;
+
+    transform: rotate(-45deg);
+
+    @include vp-767 {
+      top: 20px;
+      left: 20px;
+    }
+  }
+}
