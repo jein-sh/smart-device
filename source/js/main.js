@@ -3,3 +3,4 @@ import './modules/popup.js';
 import './modules/form.js';
 import './modules/about.js';
 import './modules/promo-button';
+import './modules/scroll-top';

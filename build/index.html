@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Описание проекта">
   <title>Smart Device</title>
-  <link rel="stylesheet" href="css/style.min.css">
   <link rel="preload" href="fonts/PTMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/PTMono-Regular.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="fonts/RobotoCondensed-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/RobotoCondensed-Regular.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="fonts/RobotoCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/RobotoCondensed-Bold.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body class="page-body">
@@ -97,7 +97,13 @@
         </ul>
       </section>
       <section class="about container" id="about">
-        <img class="about__img" src="img/2022.png" width="150" height="320" alt="2022 год">
+        <div class="about__img">
+          <!-- 1x: 150px x 320px, 2x: 300px x 640px -->
+          <picture>
+            <source type="image/webp" srcset="img/2022.webp 1x, img/2022@2x.webp 2x">
+            <img src="img/2022.png" srcset="img/2022@2x.png 2x" width="150" height="320" alt="2022 год">
+          </picture>
+        </div>
         <div class="about__description">
           <h2>О компании</h2>
           <p>Мы поставляем электронные комплектующие, производим печатные платы и предоставляем мировые технологии с
@@ -121,7 +127,7 @@
           <button class="button button--transparent-blue about__button" type="button">Подробнее</button>
         </div>
       </section>
-      <section class="catalog scroll-top" id="catalog">
+      <section class="catalog" id="catalog">
         <div class="container">
           <h2>Smart Device предлагает следующие товары и услуги</h2>
           <ul class="catalog__list">
@@ -161,11 +167,16 @@
           </ul>
         </div>
       </section>
-      <section class="feedback scroll-top" id="form">
+      <section class="feedback" id="form">
         <div class="container feedback__intro">
           <h2 class="visually-hidden">Форма обратной связи</h2>
           <div class="feedback__image">
-            <img src="img/paper_airplane.png" width="510" height="285" alt="Бумажный самолетик">
+            <!-- 1x: 510px x 285px, 2x: 1020px x 570px -->
+            <picture>
+              <source type="image/webp" srcset="img/paper-airplane.webp 1x, img/paper-airplane@2x.webp 2x">
+              <img src="img/paper-airplane.png" srcset="img/paper-airplane@2x.png 2x" width="510" height="285"
+                alt="Бумажный самолетик">
+            </picture>
           </div>
           <form class="feedback__form form" method="get" action="https://echo.htmlacademy.ru">
             <fieldset>
@@ -174,8 +185,8 @@
               <div class="form__contacts">
                 <div class="form__field">
                   <label class="visually-hidden" for="name">Вашe имя</label>
-                  <input name="name" type="text" id="name"  placeholder="Имя" pattern="^[а-яА-ЯёЁa-zA-Z0-9'-\s]+$" autocomplete="off"
-                    required>
+                  <input name="name" type="text" id="name" placeholder="Имя" pattern="^[а-яА-ЯёЁa-zA-Z0-9'-\s]+$"
+                    autocomplete="off" required>
                 </div>
                 <div class="form__field">
                   <label class="visually-hidden" for="phone">Ваш телефон</label>
@@ -284,39 +295,40 @@
         </div>
       </div>
     </footer>
+    <div class="modal">
+      <div class="modal__intro">
+        <button class="modal__close" type="button"></button>
+        <form class="form form-modal" method="get" action="https://echo.htmlacademy.ru">
+          <fieldset>
+            <legend>Закажите звонок</legend>
+            <p>Оставьте контакты, мы проконсультируем вас бесплатно в удобное время</p>
+            <div class="form__contacts form__contacts--modal">
+              <div class="form__field form__field--modal">
+                <label class="visually-hidden" for="name">Вашe имя</label>
+                <input name="name" type="text" id="modal-name" pattern="^[а-яА-ЯёЁa-zA-Z0-9'-\s]+$" placeholder="Имя"
+                  autocomplete="off" required>
+              </div>
+              <div class="form__field form__field--modal">
+                <label class="visually-hidden" for="phone">Ваш телефон</label>
+                <input name="phone" type="tel" id="modal-phone" pattern="^[^а-яА-ЯёЁa-zA-Z]+$" placeholder="Телефон"
+                  size="16" autocomplete="off" required>
+              </div>
+            </div>
+            <textarea name="question" placeholder="Ваш вопрос"></textarea>
+            <div class="form__footer form__footer--modal">
+              <button class="form__button form__button--modal button button--black" type="submit">Отправить</button>
+              <div class="form__field-checkbox form__field-checkbox--modal">
+                <input type="checkbox" class="visually-hidden" id="modal-consent" checked required>
+                <label for="consent">Я&nbsp;согласен на&nbsp;обработку персональных данных</label>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="overlay"></div>
   </div>
-  <div class="modal">
-    <button class="modal__close" type="button"></button>
-    <form class="form form-modal" method="get" action="https://echo.htmlacademy.ru">
-      <fieldset>
-        <legend>Закажите звонок</legend>
-        <p>Оставьте контакты, мы проконсультируем вас бесплатно в удобное время</p>
-        <div class="form__contacts form__contacts--modal">
-          <div class="form__field form__field--modal">
-            <label class="visually-hidden" for="name">Вашe имя</label>
-            <input name="name" type="text" id="modal-name"  pattern="/^[а-яА-ЯёЁa-zA-Z0-9'-\s]+$/" placeholder="Имя" autocomplete="off"
-              required>
-          </div>
-          <div class="form__field form__field--modal">
-            <label class="visually-hidden" for="phone">Ваш телефон</label>
-            <input name="phone" type="tel" id="modal-phone" pattern="/^[^а-яА-ЯёЁa-zA-Z]+$/" placeholder="Телефон"
-              size="16" autocomplete="off" required>
-          </div>
-        </div>
-        <textarea name="question" placeholder="Ваш вопрос"></textarea>
-        <div class="form__footer form__footer--modal">
-          <button class="form__button form__button--modal button button--black" type="submit">Отправить</button>
-          <div class="form__field-checkbox form__field-checkbox--modal">
-            <input type="checkbox" class="visually-hidden" id="modal-consent" checked required>
-            <label for="consent">Я&nbsp;согласен на&nbsp;обработку персональных данных</label>
-          </div>
-        </div>
-      </fieldset>
-    </form>
-  </div>
-  <div class="overlay"></div>
 
-  <script src="js/vendor.min.js"></script>
   <script src="js/main.min.js"></script>
 </body>
 

@@ -1,7 +1,4 @@
-let form = document.querySelector('.form');
-let nameInput = form.querySelector('#name');
-let phoneInput = form.querySelector('#phone');
-
+let forms = document.querySelectorAll('form');
 let isStorageSupport = true;
 let storage = {};
 
@@ -11,58 +8,61 @@ try {
   isStorageSupport = false;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  if (storage) {
-    nameInput.value = storage.name;
-    phoneInput.value = storage.phone;
+forms.forEach((form) => {
+  let name = form.querySelector('[name=name]');
+  let phone = form.querySelector('[name=phone]');
 
-  }
-});
+  document.addEventListener('DOMContentLoaded', function () {
+    if (storage) {
+      name.value = storage.name;
+      phone.value = storage.phone;
+    }
+  });
 
-form.addEventListener('submit', function () {
-  if (isStorageSupport) {
-    storage = {
-      name: nameInput.value,
-      phone: phoneInput.value,
+  form.addEventListener('submit', function () {
+    if (isStorageSupport) {
+      storage = {
+        name: name.value,
+        phone: phone.value,
+      };
+      localStorage.setItem('storage', JSON.stringify(storage));
+    }
+  });
 
-    };
-    localStorage.setItem('storage', JSON.stringify(storage));
-  }
-});
+  phone.addEventListener('keypress', (evt) => {
+    if (evt.keyCode < 47 || evt.keyCode > 57) {
+      evt.preventDefault();
+    }
+    if (phone.value.length === 7) {
+      phone.value += ') ';
+    }
+  });
 
-phoneInput.addEventListener('keypress', (evt) => {
-  if (evt.keyCode < 47 || evt.keyCode > 57) {
-    evt.preventDefault();
-  }
-  if (phoneInput.value.length === 7) {
-    phoneInput.value += ') ';
-  }
-});
+  phone.addEventListener('focus', () => {
+    if (phone.value.length === 0) {
+      phone.value = '+7 (';
+      phone.selectionStart = phone.value.length;
+    }
+  });
 
-phoneInput.addEventListener('focus', () => {
-  if (phoneInput.value.length === 0) {
-    phoneInput.value = '+7 (';
-    phoneInput.selectionStart = phoneInput.value.length;
-  }
-});
+  phone.addEventListener('click', (evt) => {
+    if (phone.selectionStart < 4) {
+      phone.selectionStart = phone.value.length;
+    }
+    if (evt.key === 'Backspace' && phone.value.length <= 4) {
+      evt.preventDefault();
+    }
+  });
 
-phoneInput.addEventListener('click', (evt) => {
-  if (phoneInput.selectionStart < 3) {
-    phoneInput.selectionStart = phoneInput.value.length;
-  }
-  if (evt.key === 'Backspace' && phoneInput.value.length <= 3) {
-    evt.preventDefault();
-  }
-});
+  phone.addEventListener('blur', () => {
+    if (phone.value === '+7(') {
+      phone.value = '';
+    }
+  });
 
-phoneInput.addEventListener('blur', () => {
-  if (phoneInput.value === '+7(') {
-    phoneInput.value = '';
-  }
-});
-
-phoneInput.addEventListener('keydown', (evt) => {
-  if (evt.key === 'Backspace' && phoneInput.value.length <= 3) {
-    evt.preventDefault();
-  }
+  phone.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Backspace' && phone.value.length <= 4) {
+      evt.preventDefault();
+    }
+  });
 });

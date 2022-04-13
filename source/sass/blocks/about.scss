@@ -24,6 +24,10 @@
   }
 }
 
+.about__description {
+  flex: 1;
+}
+
 .about h2 {
   font-family: $ff-roboto;
   font-weight: 400;

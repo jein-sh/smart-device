@@ -5,32 +5,18 @@
   padding-top: 165px;
   padding-bottom: 245px;
 
-  background-color: $color-blue;
+  background: linear-gradient(to left top, transparent 50%, $color-gray-medium 50%) left / 50% 100% no-repeat, $color-blue;
 
   @include vp-1023 {
-
     padding-top: 45px;
     padding-bottom: 125px;
+
+    background: $color-blue;
   }
 
   @include vp-767 {
     padding-top: 46px;
     padding-bottom: 90px;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 50%;
-
-    border: 960px solid transparent;
-    border-top: 840px solid $color-gray-medium;
-    border-left: 840px solid $color-gray-medium;
-
-    @include vp-1023 {
-      display: none;
-    }
   }
 }
 
