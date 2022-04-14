@@ -14,6 +14,7 @@
   z-index: 10;
 
   @include vp-1023 {
+    position: absolute;
     min-height: 100px;
   }
 
@@ -24,14 +25,17 @@
 
 .header__intro {
   display: flex;
-  align-items: center;
 }
 
 .header__nav {
-  margin-right: 5px;
+  margin: 30px 5px 0 0;
 
   @include vp-1023 {
-    margin-top: -2px;
+    margin: 20px -2px 0 0;
+  }
+
+  @include vp-767 {
+    margin-top: 15px;
   }
 }
 
@@ -42,16 +46,16 @@
   flex-wrap: wrap;
 
   width: 480px;
-  margin: 0 75px 0 85px;
+  margin: 35px 75px 0 85px;
 
   @include vp-1023 {
     justify-content: flex-end;
     width: auto;
-    margin: -18px 30px 0 0;
+    margin: 20px 30px 0 0;
   }
 
   @include vp-767 {
-    margin: -7px 20px 0 0;
+    margin: 10px 20px 0 0;
   }
 }
 
@@ -85,7 +89,7 @@
 }
 
 .header__call {
-  margin: 0 60px 0 25px;
+  margin: 35px 60px 0 25px;
 
   @include vp-1023 {
     display: none;

@@ -11,11 +11,15 @@
   @include vp-1023 {
     padding: 100px 0 125px;
     min-height: 640px;
+
+    background-position: 0 0, -125px 0;
   }
 
   @include vp-767 {
     padding: 80px 0 120px;
     min-height: 560px;
+
+    background-position: 0 0, -230px 0;
   }
 }
 

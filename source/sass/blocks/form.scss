@@ -204,6 +204,12 @@
   border-radius: 2px;
 
   cursor: pointer;
+  z-index: 10;
+}
+
+.form__field-checkbox input:hover + label::before,
+.form__field-checkbox input:focus-within + label::before {
+  background-color: $color-gray-light;
 }
 
 .form__field-checkbox input:checked + label::before {
