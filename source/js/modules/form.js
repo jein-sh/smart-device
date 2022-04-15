@@ -33,15 +33,13 @@ forms.forEach((form) => {
     if (evt.keyCode < 47 || evt.keyCode > 57) {
       evt.preventDefault();
     }
-    if (phone.value.length === 7) {
-      phone.value += ') ';
-    }
-  });
 
-  phone.addEventListener('focus', () => {
     if (phone.value.length === 0) {
       phone.value = '+7 (';
       phone.selectionStart = phone.value.length;
+    }
+    if (phone.value.length === 7) {
+      phone.value += ') ';
     }
   });
 
@@ -62,6 +60,9 @@ forms.forEach((form) => {
 
   phone.addEventListener('keydown', (evt) => {
     if (evt.key === 'Backspace' && phone.value.length <= 4) {
+      evt.preventDefault();
+    }
+    if (evt.key === 'ArrowLeft' && phone.value.length <= 4) {
       evt.preventDefault();
     }
   });

@@ -815,18 +815,18 @@ button,
 }
 
 .catalog__img--card1 img {
-  -o-object-position: -180px 0px;
-  object-position: -180px 0px;
+  -o-object-position: -180px 0;
+  object-position: -180px 0;
 }
 
 .catalog__img--card2 img {
-  -o-object-position: -500px 0px;
-  object-position: -500px 0px;
+  -o-object-position: -500px 0;
+  object-position: -500px 0;
 }
 
 .catalog__img--card3 img {
-  -o-object-position: -840px 0px;
-  object-position: -840px 0px;
+  -o-object-position: -840px 0;
+  object-position: -840px 0;
 }
 
 .catalog__item h3 {
@@ -1996,7 +1996,7 @@ button,
   .promo {
     padding: 80px 0 120px;
     min-height: 560px;
-    background-position: 0 0, -230px 0px;
+    background-position: 0 0, -230px 0;
   }
 
   .promo__intro {
