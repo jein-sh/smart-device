@@ -85,6 +85,13 @@ const clean = () => {
   return del('build');
 };
 
+const ghPages = require('gh-pages');
+
+gulp.task('deploy', function() {
+  return gulp.src('./build/**/*')
+    .pipe(ghPages());
+});
+
 const syncServer = () => {
   server.init({
     server: 'build/',
